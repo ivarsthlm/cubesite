@@ -18,7 +18,7 @@
         position="-0.9 0.2 -3" scale="1.5 1.5 1.5"></a-text>
   
   <!-- TESTBOX -->
-	<a-box position="0 2 -5" src="#boxTexture" rotation="0 45 45" scale="2 2 2">
+	<a-box position="0 2 -5" color="red" rotation="0 45 45" scale="2 2 2">
 		<a-animation attribute="position" to="0 2.2 -5" direction="alternate" dur="2000"
       repeat="indefinite"></a-animation>
 	  <a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
@@ -28,15 +28,12 @@
 
 	</a-box>
 	
-	
-	
 	<!-- SOUND SPOT -->
 	<!-- <a-sound src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav" autoplay="true" position="-3 2 -5"></a-sound> -->
 	
 	<!--SKY AND GROUND-->
 	<a-sky src="#skyTexture"></a-sky>
 	<a-plane src="#groundTexture" repeat="10 10"	rotation="-90 0 0" width="30" height="30"></a-plane>
-
 	
 	<!-- LIGHTING -->
 	<a-light type="ambient" color="#445451"></a-light>
@@ -49,5 +46,3 @@
     </a-scene>
   <body>
 </html>
-
-
