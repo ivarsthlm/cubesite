@@ -11,7 +11,7 @@
 	<img id="groundTexture" src="textures/wooden-floor.jpg">
    <img id="wallTexture" src="img/norway_fjord-wide.jpg">
 	<img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
- <a-asset-item id="telephone" src="/models/telephone.glb"></a-asset-item>
+ <a-asset-item id="telephone" src="models/telephone.glb"></a-asset-item>
   </a-assets>
   
   <!-- TEXT and LOGO -->
@@ -54,8 +54,9 @@
   
   
   <!-- CAMERA -->
-  <a-camera>
+  <a-camera position="0 10 10">
     <a-cursor></a-cursor>
+	<a-animation attribute="position" to="0 2 0" direction="alternate" dur="5000"></a-animation>
   </a-camera>
     </a-scene>
   <body>
