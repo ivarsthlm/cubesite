@@ -5,6 +5,17 @@
   </head>
   <body>
     <a-scene>
+	<a-assets>
+	<img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+    <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg">
+	<img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+ 
+  </a-assets>
+	<a-box position="0 2 -5" color="red" rotation="0 45 45" scale="2 2 2">
+	<a-sphere src="#boxTexture" position="1 0 0"></a-sphere>
+	</a-box>
+	<a-sky src="#skyTexture"></a-sky>
+	<a-plane src="#groundTexture" repeat="10 10"	rotation="-90 0 0" width="30" height="30"></a-plane>
     </a-scene>
   <body>
 </html>
