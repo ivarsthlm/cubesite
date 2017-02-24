@@ -7,22 +7,27 @@
   <body>
     <a-scene>
 	<a-assets>
+	<img id="logo" src="img/ivarwhite.png">
 	<img id="groundTexture" src="textures/wooden-floor.jpg">
-   
+   <img id="wallTexture" src="img/norway_fjord-wide.jpg">
 	<img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
  <audio src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav"
       preload></audio>
   </a-assets>
   
-  <!-- TEXT -->
+  <!-- TEXT and LOGO -->
+  <a-image src="#logo" position="0 2.5 -4.9" scale="10 10 10"></a-image>
+  
   <a-text value="Hello, A-Frame!" color="#BBB"
         position="-0.9 0.2 -3" scale="1.5 1.5 1.5"></a-text>
+		
+		
   
   <!-- TESTBOX -->
  
   
-	<a-box position="0 2 -2" color="red" rotation="0 0 0" scale="0.5 0.5 0.5">
-		<a-animation attribute="position" to="0 2.2 -2" direction="alternate" dur="2000"
+	<a-box position="4 0.25 -4" color="brown" rotation="0 0 0" scale="0.5 0.5 0.5">
+		<a-animation attribute="position" to="4 0.26 -4" direction="alternate" dur="2000"
       repeat="indefinite"></a-animation>
 	  <a-animation attribute="scale" begin="mouseenter" dur="300" to="0.6 0.6 0.6"></a-animation>
   <a-animation attribute="scale" begin="mouseleave" dur="300" to="0.5 0.5 0.5"></a-animation>
@@ -38,7 +43,7 @@
 	<a-sun-sky material="sunPosition: -0.2 0.5 -5"></a-sun-sky>
 	<!--<a-sky src="#skyTexture"></a-sky>-->
 	<a-plane src="#groundTexture" rotation="-90 0 0" width="10" height="10"></a-plane>
-	<a-plane color=#ccc position="0 2.5 -5" rotation="0 0 0" width="10" height="5"></a-plane>
+	<a-plane src="#wallTexture" position="0 2.5 -5" rotation="0 0 0" width="10" height="5"></a-plane>
 	<a-plane color=#ccc position="-5 2.5 0" rotation="0 90 0" width="10" height="5"></a-plane>
 	<a-plane color=#ccc position="5 2.5 0" rotation="0 270 0" width="10" height="5"></a-plane>
 	<a-plane color=#ccc position="0 2.5 5" rotation="0 180 0" width="10" height="5"></a-plane>
