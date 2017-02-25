@@ -2,16 +2,45 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+	<script src="aframe-sun-sky.js"></script>
+<script src="aframe-mountain-component.js"></script>
 
   </head>
   <body>
+  <script>
+      AFRAME.registerComponent('sun-position-setter', {
+        init: function () {
+          var skyEl = this.el;
+          var orbitEl = this.el.sceneEl.querySelector('#orbit');
+
+          orbitEl.addEventListener('componentchanged', function changeSun (evt) {
+            var sunPosition;
+            var phi;
+            var theta;
+
+            if (evt.detail.name !== 'rotation') { return; }
+
+            sunPosition = orbitEl.getComputedAttribute('rotation');
+
+            if(sunPosition === null) { return; }
+
+            theta = Math.PI * (- 0.5);
+            phi = 2 * Math.PI * (sunPosition.y / 360 - 0.5);
+            skyEl.setAttribute('material', 'sunPosition', {
+              x: Math.cos(phi),
+              y: Math.sin(phi) * Math.sin(theta),
+              z: -1
+            });
+          });
+        }
+      });
+    </script>
     <a-scene>
 	<a-assets>
 	<img id="logo" src="img/ivarwhite.png">
 	<img id="groundTexture" src="textures/wooden-floor.jpg">
    <img id="wallTexture" src="img/norway_fjord-wide.jpg">
 	<img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
- <a-asset-item id="telephone" src="models/telephone.glb"></a-asset-item>
   </a-assets>
   
   <!-- TEXT and LOGO -->
@@ -20,7 +49,7 @@
   <a-text value="Hello, fucktards! Testa att walka runt med WASD-knapparna" color="#BBB"
         position="-3 0.3 -3" scale="1 1 1"></a-text>
 		
-		<a-entity color=red  gltf-model="#telephone"></a-entity>
+		 <a-entity mountain="color: black"></a-entity>
   
   <!-- TESTBOX -->
  
@@ -41,11 +70,19 @@
 	<!--SKY AND ROOM SETUP-->
 	<a-sun-sky material="sunPosition: -0.2 0.5 -5"></a-sun-sky>
 	<!--<a-sky src="#skyTexture"></a-sky>-->
-	<a-plane src="#groundTexture" rotation="-90 0 0" width="10" height="10"></a-plane>
-	<a-plane src="#wallTexture" position="0 2.5 -5" rotation="0 0 0" width="10" height="5"></a-plane>
-	<a-plane color=#ccc position="-5 2.5 0" rotation="0 90 0" width="10" height="5"></a-plane>
-	<a-plane color=#ccc position="5 2.5 0" rotation="0 270 0" width="10" height="5"></a-plane>
-	<a-plane color=#ccc position="0 2.5 5" rotation="0 180 0" width="10" height="5"></a-plane>
+	<a-plane material="opacity: 0.950" src="#groundTexture" rotation="-90 0 0" width="10" height="10"></a-plane>
+	<a-plane  src="#wallTexture" position="0 2.5 -5" rotation="0 0 0" width="10" height="5"></a-plane>
+	<a-plane material="opacity: 0.550" color=#ccc position="-5 2.5 0" rotation="0 90 0" width="10" height="5"></a-plane>
+	<a-plane material="opacity: 0.550" color=#ccc position="5 2.5 0" rotation="0 270 0" width="10" height="5"></a-plane>
+	<a-plane material="opacity: 0.550" color=#ccc position="0 2.5 5" rotation="0 180 0" width="10" height="5"></a-plane>
+	
+	
+	<a-sun-sky sun-position-setter>
+        <a-entity id="orbit">
+          <a-animation attribute="rotation" from="0 0 0" to="0 360 0" dur="1000000"
+                       repeat="indefinite" easing="linear"></a-animation>
+        </a-entity>
+      </a-sun-sky>
 	
 	<!-- LIGHTING -->
 	<a-light type="ambient" color="#445451"></a-light>
