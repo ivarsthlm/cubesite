@@ -4,59 +4,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
-	<script src="aframe-sun-sky.js"></script>
-
-  </head>
+	 </head>
   <body>
-  <script>
-      AFRAME.registerComponent('sun-position-setter', {
-        init: function () {
-          var skyEl = this.el;
-          var orbitEl = this.el.sceneEl.querySelector('#orbit');
-
-          orbitEl.addEventListener('componentchanged', function changeSun (evt) {
-            var sunPosition;
-            var phi;
-            var theta;
-
-            if (evt.detail.name !== 'rotation') { return; }
-
-            sunPosition = orbitEl.getAttribute('rotation');
-
-            if(sunPosition === null) { return; }
-
-            theta = Math.PI * (- 0.5);
-            phi = 2 * Math.PI * (sunPosition.y / 360 - 0.5);
-            skyEl.setAttribute('material', 'sunPosition', {
-              x: Math.cos(phi),
-              y: Math.sin(phi) * Math.sin(theta),
-              z: -1
-            });
-          });
-        }
-      });
-    </script>
+  
     <a-scene>
 	<a-assets>
-	<a-asset-item id="island" src="flyingIslands.gltf"></a-asset-item>
-	<img id="logo" src="img/ivarwhite.png">
+	
+	
+	<!-- ASSETS -->
+	<a-asset-item id="ivar3d" src="models/ivar3d.dae">
 	<img id="groundTexture" src="textures/wooden-floor.jpg">
    <img id="wallTexture" src="img/norway_fjord-wide.jpg">
-	<img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
-
   </a-assets>
   
 
   
-  
-  <a-entity gltf-model="#island"></a-entity>
-  
   <!-- TEXT and LOGO -->
-  <a-image src="#logo" position="0 2.5 -4.9" scale="10 10 10"></a-image>
+
   
-  <a-text value="Hello, fucktards! Testa att walka runt med WASD-knapparna" color="#BBB"
-        position="-3 0.3 -3" scale="1 1 1"></a-text>
-		
+  
+		<a-collada-model src="#ivar3d" position="-2.7 1.5 -4" scale="3 3 3">
+		<a-animation attribute="position" to="-2.7 1.55 -4" dur="2000" direction="alternate" repeat="indefinite">
+		</a-collada-model>
 		
   
   <!-- TESTBOX -->
@@ -81,12 +50,12 @@
 	<a-plane material="opacity: 0.950" src="#groundTexture" rotation="-90 0 0" width="10" height="10"></a-plane>
 	
 	<!-- WALL -->
-	<!-- 
+	
 	<a-plane  src="#wallTexture" position="0 2.5 -5" rotation="0 0 0" width="10" height="5"></a-plane>
 	<a-plane material="opacity: 0.550" color=#ccc position="-5 2.5 0" rotation="0 90 0" width="10" height="5"></a-plane>
 	<a-plane material="opacity: 0.550" color=#ccc position="5 2.5 0" rotation="0 270 0" width="10" height="5"></a-plane>
 	<a-plane material="opacity: 0.550" color=#ccc position="0 2.5 5" rotation="0 180 0" width="10" height="5"></a-plane> 
-	-->
+	
 	
 	<!-- SUN -->
 	<a-sun-sky sun-position-setter>
@@ -98,12 +67,12 @@
 	
 	<!-- LIGHTING -->
 	<a-light type="ambient" color="#445451"></a-light>
-  <a-light type="point" intensity="2" light="angle:52.54;decay:4.42;intensity:0.94;type:point;target:null" position="0 3 0"></a-light>
+  <a-light type="point" intensity="2" light="angle:52.54;decay:4.42;intensity:0.94;type:point;target:null" position="0 6 0"></a-light>
   
   
   
   <!-- CAMERA -->
-  <a-camera
+  <a-camera>
     <a-cursor></a-cursor>
 	
   </a-camera>
