@@ -38,6 +38,7 @@
     </script>
     <a-scene>
 	<a-assets>
+	<a-asset-item id="island" src="flyingIslands.gltf"></a-asset-item>
 	<img id="logo" src="img/ivarwhite.png">
 	<img id="groundTexture" src="textures/wooden-floor.jpg">
    <img id="wallTexture" src="img/norway_fjord-wide.jpg">
@@ -48,7 +49,7 @@
 
   
   
-  
+  <a-entity gltf-model="#island"></a-entity>
   
   <!-- TEXT and LOGO -->
   <a-image src="#logo" position="0 2.5 -4.9" scale="10 10 10"></a-image>
