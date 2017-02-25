@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
 	<script src="aframe-sun-sky.js"></script>
-<script src="aframe-mountain-component.js"></script>
 
   </head>
   <body>
@@ -20,7 +21,7 @@
 
             if (evt.detail.name !== 'rotation') { return; }
 
-            sunPosition = orbitEl.getComputedAttribute('rotation');
+            sunPosition = orbitEl.getAttribute('rotation');
 
             if(sunPosition === null) { return; }
 
@@ -41,7 +42,13 @@
 	<img id="groundTexture" src="textures/wooden-floor.jpg">
    <img id="wallTexture" src="img/norway_fjord-wide.jpg">
 	<img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+
   </a-assets>
+  
+
+  
+  
+  
   
   <!-- TEXT and LOGO -->
   <a-image src="#logo" position="0 2.5 -4.9" scale="10 10 10"></a-image>
@@ -49,7 +56,7 @@
   <a-text value="Hello, fucktards! Testa att walka runt med WASD-knapparna" color="#BBB"
         position="-3 0.3 -3" scale="1 1 1"></a-text>
 		
-		 <a-entity mountain="color: black"></a-entity>
+		
   
   <!-- TESTBOX -->
  
@@ -71,12 +78,16 @@
 	<a-sun-sky material="sunPosition: -0.2 0.5 -5"></a-sun-sky>
 	<!--<a-sky src="#skyTexture"></a-sky>-->
 	<a-plane material="opacity: 0.950" src="#groundTexture" rotation="-90 0 0" width="10" height="10"></a-plane>
+	
+	<!-- WALL -->
+	<!-- 
 	<a-plane  src="#wallTexture" position="0 2.5 -5" rotation="0 0 0" width="10" height="5"></a-plane>
 	<a-plane material="opacity: 0.550" color=#ccc position="-5 2.5 0" rotation="0 90 0" width="10" height="5"></a-plane>
 	<a-plane material="opacity: 0.550" color=#ccc position="5 2.5 0" rotation="0 270 0" width="10" height="5"></a-plane>
-	<a-plane material="opacity: 0.550" color=#ccc position="0 2.5 5" rotation="0 180 0" width="10" height="5"></a-plane>
+	<a-plane material="opacity: 0.550" color=#ccc position="0 2.5 5" rotation="0 180 0" width="10" height="5"></a-plane> 
+	-->
 	
-	
+	<!-- SUN -->
 	<a-sun-sky sun-position-setter>
         <a-entity id="orbit">
           <a-animation attribute="rotation" from="0 0 0" to="0 360 0" dur="1000000"
